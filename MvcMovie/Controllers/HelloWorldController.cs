@@ -19,10 +19,18 @@ namespace MvcMovie.Controllers
         //
         // GET: /HelloWorld/Welcome/
 
-        public ActionResult Welcome(string name, string x, int numTimes = 1)
+        public ActionResult Welcome(string name, int numTimes = 1)
         {
-            ViewBag.Message = "Hello " + name;
-            ViewBag.NumTimes = numTimes;
+            if (name != null)
+            {
+                ViewBag.Message = "Hello " + name;
+                ViewBag.NumTimes = numTimes;
+            }
+            else
+            {
+                ViewBag.Message = "No name has been specified.";
+                ViewBag.NumTimes = 1;
+            }
 
             return View();
         }
